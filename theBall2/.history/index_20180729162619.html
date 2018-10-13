@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>theBall</title>
+	<link rel="stylesheet" href="style/index.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/jquery.rotate.min.js"></script>
+</head>
+<body>
+    <section class="box">
+        <!-- 旋转div -->
+        <section class="ball ballZhuan">
+            <div class="redPart_box">
+                <div class="redPart"></div>
+            </div>
+            <div class="blackPart_box">
+                <div class="blackPart"></div>
+            </div>
+            <div class="middlePart"></div>
+        </section>
+        <div class="ball2"></div>
+
+        <section class="idx_pattern">
+            <!-- 主界面-游戏模式 --> 
+        </section>
+        <section class="idx_intro">
+            <!-- 主界面-游戏玩法 -->
+        </section>
+
+        <section class="game_mask">
+        <!-- 游戏界面-娱乐模式遮罩提示层 --> 
+        </section>
+        <div class="arrow">
+            <!-- 升级效果 -->
+        </div>
+        <section class="game_shootBox">
+            <!-- 游戏界面-小球发射 -->
+        </section>
+        <section class="game_fraction">
+            <!-- 游戏界面-分数血量显示 -->
+        </section>
+        <section class="game_hanlder">
+            <!-- 游戏界面-结束模块 -->
+        </section>
+    </div>
+
+    <script src="data/data.js"></script>
+    <script>
+        const patternLen = pattern.length;
+        const idxPattern = document.querySelector('.idx_pattern');
+        const idxIntro = document.querySelector('.idx_intro');
+        const gameShootBox = document.querySelector('.game_shootBox');
+        const gameFraction = document.querySelector('.game_fraction');
+        const gameHanlder = document.querySelector('.game_hanlder');
+        const gameMask = document.querySelector('.game_mask');
+        var my=[];
+        /*主界面-游戏模式*/
+        for(var i=0;i<patternLen;i++){
+            let idxPatternMain=`<div class="playWrap">
+                                    <div class="playTit"> ${pattern[i].patternName} </div>
+                                    <div class="playIntroduce">
+                                        <div class="playIntroduceTxt">1.通关条件 <span style="color:#EE8E4E"> ${pattern[i].explain.condition} </span></div>
+                                        <div class="playIntroduceTxt">2. ${pattern[i].explain.produce} </div>
+                                    </div>
+                                    <button class="start">START</button>
+                                </div>`
+            idxPattern.innerHTML+=idxPatternMain;
+        }
+        /*主界面-游戏玩法*/
+        let produceTxt=`<div class="introTxt">
+                            <div>
+                                1.按空格键/AD可旋转 <img src="img/img1.png" alt="" class="sizeOne">
+                            </div>
+                            <div>
+                                2.当<img src="img/img2.png" alt="" class="sizeOne">掉落时,根据模式将 <img src="img/img1.png" alt="" class="sizeOne"> 旋转到对应的颜色即可得1分,反之<span style="color:red">HP-1</span>
+                            </div>
+                            <div>
+                                3.进入游戏后，每个玩家血量为5,右上角为分数面板 <img src="img/img3.png" alt="" class="sizeTwo"> 左侧为当前分数,右侧为当前关卡上限,分数达到上限即可进入下一关
+                            </div>
+                        </div>
+                        <button class="introTxtBtn">游戏玩法</button>`
+        idxIntro.innerHTML=produceTxt;
+
+
+
+        /*游戏界面-小球发射*/
+        let gameShootBoxMain=`<div class="top">
+                                    <div class="div_middle"></div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="div_middle"></div>
+                                </div>
+                                <div class="left">
+                                    <div class="div_middle"></div>
+                                </div>
+                                <div class="right">
+                                    <div class="div_middle"></div>
+                                </div>`
+        gameShootBox.innerHTML+=gameShootBoxMain;
+        /*游戏界面-分数血量显示*/
+        let gameFractionMain=`<div class="life">HP: 
+                                    <div class="hp_div">
+                                        <div class="hp_div_main"></div>
+                                    </div>
+                                </div>
+                                <div class="fraction">
+                                    <span class="fraction_left"></span>
+                                    /
+                                    <span class="fraction_right"></span>
+                                </div>`
+        gameFraction.innerHTML=gameFractionMain;
+        /*游戏界面-结束模块*/
+        let gameHanlderMain=`<div class="interface">
+                                <div class="over">Game Over</div>
+                                <div class="success">成功通关</div>
+                            </div>
+                            <div class="button_box">
+                                <button class="button_left">再玩一次</button>
+                                <button class="button_right">返回大厅</button>
+                            </div>`
+        gameHanlder.innerHTML=gameHanlderMain;
+        /*游戏界面-娱乐模式遮罩提示层*/
+        let gameMaskMain=`<div class="Mask_span">
+                                <span>按A键向左转</span>
+                                <span>按D键向右转</span>
+                            </div>
+                            <span class="Mask_p">- 按空格键继续 -</span>`
+        gameMask.innerHTML=gameMaskMain;
+    </script>
+    <script src="js/index.js"></script>
+    <script src="js/animation.js"></script>
+</body>
+</html>
