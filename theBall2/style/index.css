@@ -5,6 +5,7 @@ input{border: none;outline: none;-webkit-tap-highlight-color: #000000;-webkit-ta
 button{outline: none;}
 
 .box{
+    overflow: hidden;
     position: relative;
     margin: 50px auto 0;
     width: 720px;

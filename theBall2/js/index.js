@@ -28,7 +28,6 @@ let ballShow=$('.ball');
 let ballShowW=160;
 let ballShowH=160;
 let balo;
-let kg=false;
 
 
 const start=document.querySelectorAll('.start');
@@ -55,7 +54,7 @@ function initInfo(){
     hp=10;
     hp_box=10;
     fail_hp=hp*100/hp_box;
-    fractionNow=58;
+    fractionNow=0;
     fractionNeed=10;
     numList=-180;
     degree=180;
@@ -86,7 +85,7 @@ function ballReady(patternNow){
     
     delayed=0;
     levelUp(patternNow);
-    if(fractionNow==100&&patternNow==0||fractionNow==60&&patternNow==1){
+    if(fractionNow==100&&patternNow==0||fractionNow==50&&patternNow==1){
         return;
     }
     // if(life==true){
@@ -136,7 +135,7 @@ function ballMove(launchBall,chooseBox,patternNow){
 
 /*关卡分数及条件设置*/
 function levelUp(patternNow){
-    if(patternNow==0&&fractionNow==100||patternNow==1&&fractionNow==60){
+    if(patternNow==0&&fractionNow==100||patternNow==1&&fractionNow==50){
         $('.success').animate({opacity:1},600,function(){
             $('.button_box').css('display','block');
             $('.button_box').animate({opacity:1},800);
@@ -144,7 +143,13 @@ function levelUp(patternNow){
         life=false;
         return;
     }
-    if(fractionNow%10==0&&fractionNow!==0){
+    if(patternNow==0&&fractionNow%10==0&&fractionNow!==0){
+        callarrow("速度加快");
+        fractionNeed+=20;
+        speed-=100;
+        delayed=1100;
+    }
+    if(patternNow==1&&(fractionNow==10||fractionNow==30)&&fractionNow!==0){
         callarrow("速度加快");
         fractionNeed+=20;
         speed-=100;

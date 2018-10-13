@@ -18,7 +18,7 @@ var pattern=[
     {
         patternName:'颠倒模式',
         explain:{
-            condition:'60分',
+            condition:'50分',
             produce:'关卡为3个，小球撞击位置需与发球相反，游戏难度随得分增加',
             tip:''
         }
